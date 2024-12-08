@@ -37,6 +37,7 @@ jobs:
         with:
           aws-access-key-id: ASIAUAVACLUHQKTELI3C
           aws-secret-access-key: scioI7T7Ck6Tvgr3clP8RZahViH1uUsddkS6TIn4
+          aws-session-token :  IQoJb3JpZ2luX2VjEKb//////////wEaCXVzLXdlc3QtMiJHMEUCIQC+7GwPor4lVSdOt9YmlmISqeLOf+TKZWcAQdnArY1G/QIgS6pP4dLZ0xA073G1luai0DX/BtIK1xUR01REWjy3Do0qtgIIXxAAGgwyNzYyODczNDc5ODMiDFDqpV4q2C4QHO1oeiqTAgrvYIXwRotklrtt+loXEhNXyMUOoB30RKETy0QmOgL+vpAFNqIAbkgg0ZQxzlmbkrSU5sfrIFqCNpvoxJZhEvbWTAbMfQiqvWT8Nfbyo1T0A95Lp0MG1eVNMIIgvWL6uG9aDw0h1tW0ibYHkaMfndAQCd/rtkdmf/ms+s0tX4Aa87UQi6xdcgcQatVxK10r904O9nmjIdnEUNKF7W95o/xdO+aEaCF7O4D5BCqdzbAosZ9uYenvZf+CT6ROP02m7Hk5CaYUeb4uXFRVV//Ku7VeGvudWUr3InnjtGaGfp4RvX2Gd7pNr/+DjRJFaUg8kOyuZ8sc/YEJ+werX4DsoBRljzHS6zsyNqnKmFKTmnyPKsdxMPvN1roGOp0BNqmGAwAU/oV3uEniVP0XwIalwgZgmmOmnSBQWR8EeuvMpHhEyxswBjMDWYyRYRTAj5/kWbUWNzrNPXEE9JfDRnFrv57z9yDKaAF+hrTxkxnuwBJJWhEhO0RFW4ndk1z8lwJf3zJR7PQU++9M/C6Px1L9fnbn6lfsReXOp+znpQA1KyUI3wG5c6sBmPdNXTBn90mvYulg+Qn1Ggxn/g==
           aws-region: us-east-1
 
       # Atualizar o Kube Config para acessar o EKS
