@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: matheuspatricio0/projeto-fiap:1.0.2
+          image: matheuspatricio0/projeto-fiap:latest
           resources:
             requests:
               memory: "256Mi"
@@ -27,8 +27,8 @@ spec:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://db-service:5432/postgres?currentSchema=public
+              value: jdbc:postgresql://projetofiap.c0qwoqfpu6hy.us-east-1.rds.amazonaws.com:5432/projetofiap?currentSchema=public
             - name: SPRING_DATASOURCE_USERNAME
-              value: postgres
+              value: postgres_user
             - name: SPRING_DATASOURCE_PASSWORD
-              value: postgres
+              value: mypassword
