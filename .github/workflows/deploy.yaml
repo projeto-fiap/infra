@@ -28,16 +28,16 @@ jobs:
         run: cd terraform-config
 
       - name: Terraform Validate
-        run: terraform validate
-
-      - name: Terraform Init
-        run: terraform init
-
-      - name: Terraform Plan
-        run: terraform plan
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: |
+          echo pwd
+          ls -l
+          cd terraform-config
+          echo pwd
+          ls -l
+          terraform validate
+          terraform init
+          terraform plan
+          terraform apply -auto-approve
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -49,7 +49,7 @@ jobs:
 
 
       - name: Update Kube Config
-        run: aws eks update-kubeconfig --name nginx --region us-east-1
+        run: aws eks update-kubeconfig --name kubernetes-tech-challenge --region us-east-1
 
       - name: Deploy Kubernetes Resources
         run: |
