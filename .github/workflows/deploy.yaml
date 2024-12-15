@@ -27,7 +27,7 @@ jobs:
       - name: Terraform Validate
         run: |
           cd terraform-config
-         terraform validate
+          terraform validate
 
       - name: Terraform Init
         run: |
