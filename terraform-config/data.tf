@@ -1,8 +1,5 @@
 data "aws_vpc" "vpc" {
   cidr_block = var.vpcCidr
-  tags = {
-    Name = "vpc-kubernetes-techchallenge"
-  }
 }
 
 data "aws_subnets" "subnets" {
