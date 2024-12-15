@@ -3,7 +3,7 @@ variable "regionDefault" {
 }
 
 variable "projectName" {
-  default = "nginx"
+  default = "kubernetes-tech-challenge"
 }
 
 variable "vpcCidr" {
@@ -13,11 +13,6 @@ variable "vpcCidr" {
 variable "instanceType" {
   default = "t3a.medium"
 }
-
-variable "accountIdVoclabs" {
-    default = "276287347983"
-}
-
 
 variable "policyArn" {
   default = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
