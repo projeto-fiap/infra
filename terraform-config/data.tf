@@ -1,9 +1,5 @@
 data "aws_vpc" "vpc" {
   cidr_block = var.vpcCidr
-}
-
-data "aws_vpc" "vpc" {
-  cidr_block = var.vpcCidr
   tags = {
     Name = "vpc-kubernetes-techchallenge"
   }
