@@ -6,6 +6,10 @@ variable "projectName" {
   default = "kubernetes-tech-challenge"
 }
 
+variable "accountIdVoclabs" {
+  default = "276287347983"
+}
+
 variable "vpcCidr" {
   default = "172.31.0.0/16"
 }
