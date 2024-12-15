@@ -1,43 +1,65 @@
-name: Deploy Kubernetes Infra
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Kubectl
-        run: |
-          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-          chmod +x kubectl
-          sudo mv kubectl /usr/local/bin/
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
-        with:
-          terraform_version: 1.5.6
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-
-      - name: Terraform Validate
-        run: |
-          terraform validate
-
-      - name: Terraform Destroy
-        run: |
-          terraform init
-          terraform destroy -auto-approve
- 
+#name: Deploy Kubernetes Infra
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  deploy:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: Install Kubectl
+#        run: |
+#          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+#          chmod +x kubectl
+#          sudo mv kubectl /usr/local/bin/
+#
+#      - name: Setup Terraform
+#        uses: hashicorp/setup-terraform@v2
+#        with:
+#          terraform_version: 1.5.6
+#
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: us-east-1
+#          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+#
+#      - name: Terraform Validate
+#        run: |
+#          terraform validate
+#
+#      - name: Terraform Init
+#        run: |
+#          cd terraform-config
+#          terraform init
+#
+#      - name: Terraform Plan
+#        run: |
+#          cd terraform-config
+#          terraform plan
+#
+#      - name: Terraform Apply
+#        run: |
+#          cd terraform-config
+#          terraform apply -auto-approve
+#
+#      - name: Update Kube Config
+#        run: aws eks update-kubeconfig --name kubernetes-tech-challenge --region us-east-1
+#
+#      - name: Create Kubernetes Namespace
+#        run: |
+#          kubectl create namespace default-namespace || echo "Namespace already exists"
+#
+#      - name: Deploy Kubernetes Resources
+#        run: |
+#          kubectl apply -f terraform-config/k8s/app-deployment.yaml -n default-namespace
+#          kubectl apply -f terraform-config/k8s/hpa.yaml -n default-namespace
+#          kubectl apply -f terraform-config/k8s/service.yaml -n default-namespace
