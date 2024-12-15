@@ -54,8 +54,12 @@ jobs:
       - name: Update Kube Config
         run: aws eks update-kubeconfig --name kubernetes-tech-challenge --region us-east-1
 
+      - name: Create Kubernetes Namespace
+        run: |
+          kubectl create namespace default-namespace || echo "Namespace already exists"
+
       - name: Deploy Kubernetes Resources
         run: |
-          kubectl apply -f terraform-config/k8s/app-deployment.yaml
-          kubectl apply -f terraform-config/k8s/hpa.yaml
-          kubectl apply -f terraform-config/k8s/service.yaml
+          kubectl apply -f terraform-config/k8s/app-deployment.yaml -n default-namespace
+          kubectl apply -f terraform-config/k8s/hpa.yaml -n default-namespace
+          kubectl apply -f terraform-config/k8s/service.yaml -n default-namespace
