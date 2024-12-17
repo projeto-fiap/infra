@@ -41,6 +41,11 @@ jobs:
           cd terraform-config
           terraform init
 
+      - name: Terraform Import SG
+        run: |
+          cd terraform-config
+          terraform import aws_security_group.sg sg-08acb5901abef9267 || echo "SG already imported"
+
       - name: Terraform Plan
         run: |
           cd terraform-config
