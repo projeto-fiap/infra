@@ -41,6 +41,11 @@ jobs:
           cd terraform-config
           terraform init
 
+      - name: Terraform Import EKS Cluster
+        run: |
+          cd terraform-config
+          terraform import aws_eks_cluster.eks-cluster kubernetes-tech-challenge || echo "EKS Cluster already imported"
+
       - name: Terraform Import SG
         run: |
           cd terraform-config
