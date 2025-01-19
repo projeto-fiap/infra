@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak-deployment
+  namespace: default-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: quay.io/keycloak/keycloak:26.0.7
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: keycloak-imports
+              mountPath: /opt/keycloak/data/import
+          command: [ "start-dev", "--import-realm", "--verbose" ]
+          volumes:
+            - name: keycloak-imports
+              hostPath:
+                path: ../keycloak/imports
+                type: Directory
+          restartPolicy: Always
+          env:
+            - name: DB_VENDOR
+              value: postgres
+            - name: DB_ADDR
+              value: projetofiappayments.caetpmx4dios.us-east-1.rds.amazonaws.com
+            - name: DB_DATABASE
+              value: keycloak
+            - name: DB_USER
+              value: postgres
+            - name: DB_PASSWORD
+              value: postgres
+            - name: KC_FEATURES
+              value: scripts
+            - name: KEYCLOAK_ADMIN
+              value: user
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: password
