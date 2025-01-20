@@ -32,34 +32,34 @@ jobs:
           aws-region: us-east-1
           aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
 
-#      - name: Terraform Validate
-#        run: |
-#          terraform validate
-#
-#      - name: Terraform Init
-#        run: |
-#          cd terraform-config
-#          terraform init
-#
-#      - name: Terraform Import EKS Cluster
-#        run: |
-#          cd terraform-config
-#          terraform import aws_eks_cluster.eks-cluster kubernetes-tech-challenge || echo "EKS Cluster already imported"
-#
-#      - name: Terraform Import SG
-#        run: |
-#          cd terraform-config
-#          terraform import aws_security_group.sg sg-08acb5901abef9267 || echo "SG already imported"
-#
-#      - name: Terraform Plan
-#        run: |
-#          cd terraform-config
-#          terraform plan
-#
-#      - name: Terraform Apply
-#        run: |
-#          cd terraform-config
-#          terraform apply -auto-approve
+      #      - name: Terraform Validate
+      #        run: |
+      #          terraform validate
+      #
+      #      - name: Terraform Init
+      #        run: |
+      #          cd terraform-config
+      #          terraform init
+      #
+      #      - name: Terraform Import EKS Cluster
+      #        run: |
+      #          cd terraform-config
+      #          terraform import aws_eks_cluster.eks-cluster kubernetes-tech-challenge || echo "EKS Cluster already imported"
+      #
+      #      - name: Terraform Import SG
+      #        run: |
+      #          cd terraform-config
+      #          terraform import aws_security_group.sg sg-08acb5901abef9267 || echo "SG already imported"
+      #
+      #      - name: Terraform Plan
+      #        run: |
+      #          cd terraform-config
+      #          terraform plan
+      #
+      #      - name: Terraform Apply
+      #        run: |
+      #          cd terraform-config
+      #          terraform apply -auto-approve
 
       - name: Update Kube Config
         run: aws eks update-kubeconfig --name kubernetes-tech-challenge --region us-east-1
@@ -70,15 +70,15 @@ jobs:
 
       - name: Deploy Kubernetes Resources
         run: |
-#               Tech Challenge
-#          kubectl apply -f terraform-config/k8s/tech-challenge-deployment.yaml -n default-namespace
-#          kubectl apply -f terraform-config/k8s/hpa-tech-challenge.yaml -n default-namespace
-#          kubectl apply -f terraform-config/k8s/service-tech-challenge.yaml -n default-namespace
-#          Payments
-#          kubectl apply -f terraform-config/k8s/tech-challenge-payments-deployment.yaml -n default-namespace
-#          kubectl apply -f terraform-config/k8s/hpa-tech-challenge-payments.yaml -n default-namespace
-#          kubectl apply -f terraform-config/k8s/service-tech-challenge-payments.yaml -n default-namespace
-#          Keycloak
-          kubectl apply -f terraform-config/k8s/keycloak-deployment.yaml -n default-namespace
-          kubectl apply -f terraform-config/k8s/service-keycloak.yaml -n default-namespace
-          kubectl apply -f terraform-config/k8s/hpa-keycloak.yaml -n default-namespace
+               kubectl apply -f terraform-config/k8s/keycloak-deployment.yaml -n default-namespace
+               kubectl apply -f terraform-config/k8s/service-keycloak.yaml -n default-namespace
+               kubectl apply -f terraform-config/k8s/hpa-keycloak.yaml -n default-namespace
+        #               Tech Challenge
+          #          kubectl apply -f terraform-config/k8s/tech-challenge-deployment.yaml -n default-namespace
+          #          kubectl apply -f terraform-config/k8s/hpa-tech-challenge.yaml -n default-namespace
+          #          kubectl apply -f terraform-config/k8s/service-tech-challenge.yaml -n default-namespace
+          #          Payments
+          #          kubectl apply -f terraform-config/k8s/tech-challenge-payments-deployment.yaml -n default-namespace
+          #          kubectl apply -f terraform-config/k8s/hpa-tech-challenge-payments.yaml -n default-namespace
+          #          kubectl apply -f terraform-config/k8s/service-tech-challenge-payments.yaml -n default-namespace
+          #          Keycloak
