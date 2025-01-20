@@ -63,6 +63,8 @@ jobs:
 
       - name: Update Kube Config
         run: aws eks update-kubeconfig --name kubernetes-tech-challenge --region us-east-1
+      - name: Current Context
+        run: kubectl config current-context
 
       - name: Create Kubernetes Namespace
         run: |
