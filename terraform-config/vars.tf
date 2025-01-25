@@ -7,7 +7,7 @@ variable "projectName" {
 }
 
 variable "accountIdVoclabs" {
-  default = "276287347983"
+  default = "982558657406"
 }
 
 variable "vpcCidr" {
