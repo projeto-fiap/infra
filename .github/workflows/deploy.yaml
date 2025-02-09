@@ -72,8 +72,9 @@ jobs:
 
       - name: Deploy Kubernetes Resources
         run: |
+               kubectl apply -f terraform-config/k8s/keycloak-configmap.yaml -n default-namespace --validate=false
                kubectl apply -f terraform-config/k8s/keycloak-deployment.yaml -n default-namespace --validate=false
-               kubectl apply -f terraform-config/k8s/service-keycloak.yaml -n default-namespace --validate=false
+               kubectl apply -f terraform-config/k8s/keycloak-service.yaml -n default-namespace --validate=false
                kubectl apply -f terraform-config/k8s/hpa-keycloak.yaml -n default-namespace --validate=false
         #               Tech Challenge
           #          kubectl apply -f terraform-config/k8s/tech-challenge-deployment.yaml -n default-namespace

@@ -20,26 +20,18 @@ spec:
             requests:
               memory: "256Mi"
               cpu: "250m"
-            limits:
-              memory: "512Mi"
-              cpu: "500m"
           ports:
             - containerPort: 8080
           volumeMounts:
             - name: keycloak-imports
               mountPath: /opt/keycloak/data/import
-          command: [ "start-dev", "--import-realm", "--verbose" ]
-          volumes:
-            - name: keycloak-imports
-              hostPath:
-                path: ../keycloak/imports
-                type: Directory
-          restartPolicy: Always
+              readOnly: true
+          command: [ "/opt/keycloak/bin/kc.sh" ,"start-dev","--import-realm", "--verbose" ]
           env:
             - name: DB_VENDOR
               value: postgres
             - name: DB_ADDR
-              value: projetofiappayments.caetpmx4dios.us-east-1.rds.amazonaws.com
+              value: http://localhost:5432
             - name: DB_DATABASE
               value: keycloak
             - name: DB_USER
@@ -52,3 +44,7 @@ spec:
               value: user
             - name: KEYCLOAK_ADMIN_PASSWORD
               value: password
+      volumes:
+        - name: keycloak-imports
+          configMap:
+            name: keycloak-realm-config
