@@ -72,6 +72,8 @@ jobs:
 
       - name: Deploy Kubernetes Resources
         run: |
+               pwd
+               echo dir
                kubectl apply -f terraform-config/k8s/keycloak-configmap.yaml -n default-namespace --validate=false
                kubectl apply -f terraform-config/k8s/keycloak-deployment.yaml -n default-namespace --validate=false
                kubectl apply -f terraform-config/k8s/keycloak-service.yaml -n default-namespace --validate=false
