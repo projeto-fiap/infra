@@ -76,12 +76,3 @@ jobs:
                kubectl apply -f terraform-config/k8s/keycloak-deployment.yaml -n default-namespace --validate=false
                kubectl apply -f terraform-config/k8s/keycloak-service.yaml -n default-namespace --validate=false
                kubectl apply -f terraform-config/k8s/hpa-keycloak.yaml -n default-namespace --validate=false
-        #               Tech Challenge
-          #          kubectl apply -f terraform-config/k8s/tech-challenge-deployment.yaml -n default-namespace
-          #          kubectl apply -f terraform-config/k8s/hpa-tech-challenge.yaml -n default-namespace
-          #          kubectl apply -f terraform-config/k8s/service-tech-challenge.yaml -n default-namespace
-          #          Payments
-          #          kubectl apply -f terraform-config/k8s/tech-challenge-payments-deployment.yaml -n default-namespace
-          #          kubectl apply -f terraform-config/k8s/hpa-tech-challenge-payments.yaml -n default-namespace
-          #          kubectl apply -f terraform-config/k8s/service-tech-challenge-payments.yaml -n default-namespace
-          #          Keycloak
